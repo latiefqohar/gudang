@@ -66,6 +66,14 @@ class Barang extends CI_Controller {
         $this->session->set_flashdata('msg','swal("Sukses!", "Data Berhasil Dihapus!", "success");');
         redirect('barang','refresh');
     }
+
+    public function input_stock(){
+        // $data['barang']['status'] = "gagal";
+        $data['barang']="";
+        $this->load->view('header');
+        $this->load->view('input_stok',$data);
+        $this->load->view('footer');
+    }
        
 }
 
