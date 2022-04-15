@@ -211,10 +211,26 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="<?= base_url("barang/stock_keluar"); ?>" class="nav-link">
+            <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p>
+                Barang Keluar
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="<?= base_url("barang"); ?>" class="nav-link">
               <i class="nav-icon fas fa-server"></i>
               <p>
                 Data Barang
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= base_url("suplier"); ?>" class="nav-link">
+              <i class="nav-icon fas fa-link"></i>
+              <p>
+                Data Suplier
               </p>
             </a>
           </li>
