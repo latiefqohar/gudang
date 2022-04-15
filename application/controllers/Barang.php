@@ -68,8 +68,27 @@ class Barang extends CI_Controller {
     }
 
     public function input_stock(){
-        // $data['barang']['status'] = "gagal";
         $data['barang']="";
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $post = $this->input->post();
+           $cek = $this->main_model->find_data(['kode_barcode'=>$post['kode_barcode']],'barang')->num_rows();
+           if ($cek > 0) {
+               if (isset($post['qty'])) {
+                    $this->db->query("UPDATE barang  set qty=qty+".$post['qty']." where kode_barcode=".$post['kode_barcode']);
+               }else{
+                    $this->db->query("UPDATE barang  set qty=qty+1 where kode_barcode=".$post['kode_barcode']);
+               }
+              
+               $data['barang'] = $this->main_model->find_data(['kode_barcode'=>$post['kode_barcode']],'barang')->row_array();
+               $data['barang']['status']="sukses";
+           }else{
+            $data['barang']=array(
+                "status"=>"gagal"
+            );
+           }
+        }
+
         $this->load->view('header');
         $this->load->view('input_stok',$data);
         $this->load->view('footer');
