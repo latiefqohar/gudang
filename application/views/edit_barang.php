@@ -33,9 +33,14 @@
                                 placeholder="Harga Barang" value="<?= $barang['harga']; ?>" required>
                         </div>
                         <div class="form-group">
-                            <label for="no_rak">No. Rak</label>
-                            <input type="text" class="form-control" name="no_rak" id="no_rak" 
-                                placeholder="Harga Barang" value="<?= $barang['no_rak']; ?>" required>
+                            <label for="no_rak">Penyimpanan</label>
+                            <select name="no_rak" class="form-control" required>
+                            <option value="">Pilih Rak</option>
+                            <option value="Baris A" <?php if($barang['no_rak']=="Baris A"){ echo "selected";} ?>>Baris A</option>
+                            <option value="Baris B" <?php if($barang['no_rak']=="Baris B"){ echo "selected";} ?>>Baris B</option>
+                            <option value="Baris C" <?php if($barang['no_rak']=="Baris C"){ echo "selected";} ?>>Baris C</option>
+                            <option value="Baris D" <?php if($barang['no_rak']=="Baris D"){ echo "selected";} ?>>Baris D</option>
+                        </select>
                         </div>
                         <button type="submit" class="btn btn-primary float-right">Simpan</button>
                     </form>

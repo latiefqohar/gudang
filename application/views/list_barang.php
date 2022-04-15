@@ -17,7 +17,7 @@
 									<th>Barcode</th>
 									<th>Nama</th>
 									<th>Stok</th>
-									<th>No. Rak</th>
+									<th>Penyimpanan</th>
 									<th>Aksi</th>
 								</tr>
 							</thead>
@@ -85,9 +85,14 @@
                             placeholder="Harga Barang" required>
                     </div>
                     <div class="form-group">
-                        <label for="no_rak">No. Rak</label>
-                        <input type="text" class="form-control" name="no_rak" id="no_rak" 
-                            placeholder="No Rak Penyimpanan" required>
+                        <label for="no_rak">Penyimpanan</label>
+                        <select name="no_rak" class="form-control" required>
+                            <option value="">Pilih Rak</option>
+                            <option value="Baris A">Baris A</option>
+                            <option value="Baris B">Baris B</option>
+                            <option value="Baris C">Baris C</option>
+                            <option value="Baris D">Baris D</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary float-right">Submit</button>
                 </form>

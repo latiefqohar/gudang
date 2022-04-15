@@ -76,9 +76,20 @@ class Barang extends CI_Controller {
            if ($cek > 0) {
                if (isset($post['qty'])) {
                     $this->db->query("UPDATE barang  set qty=qty+".$post['qty']." where kode_barcode=".$post['kode_barcode']);
+                    $qty = $post['qty'];
                }else{
                     $this->db->query("UPDATE barang  set qty=qty+1 where kode_barcode=".$post['kode_barcode']);
+                    $qty=1;
                }
+
+               $detail_barang = $this->main_model->find_data(['kode_barcode'=>$post['kode_barcode']],'barang')->row_array();
+
+               $data_masuk = array(
+                    'id_barang'=>$detail_barang['id'],
+                    'qty'=>$qty,
+                    'tanggal_transaksi'=>date('Y-m-d H:i:s')
+               );
+               $this->main_model->insert_data($data_masuk,'barang_masuk');
               
                $data['barang'] = $this->main_model->find_data(['kode_barcode'=>$post['kode_barcode']],'barang')->row_array();
                $data['barang']['status']="sukses";
@@ -93,7 +104,54 @@ class Barang extends CI_Controller {
         $this->load->view('input_stok',$data);
         $this->load->view('footer');
     }
-       
+    
+    public function stock_keluar(){
+        $data['barang']="";
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $post = $this->input->post();
+           $cek = $this->main_model->find_data(['kode_barcode'=>$post['kode_barcode']],'barang')->num_rows();
+           if ($cek > 0) {
+               $cek_stok = $this->main_model->find_data(['kode_barcode'=>$post['kode_barcode'],'qty >'=>0],'barang')->num_rows();
+                if ($cek_stok < 1) {
+                    $data['barang']=array(
+                        "status"=>"gagal",
+                        "pesan" => "Stok Kosong"
+                    );
+                }else{
+                    if (isset($post['qty'])) {
+                        $this->db->query("UPDATE barang  set qty=qty-".$post['qty']." where kode_barcode=".$post['kode_barcode']);
+                        $qty = $post['qty'];
+                   }else{
+                        $this->db->query("UPDATE barang  set qty=qty-1 where kode_barcode=".$post['kode_barcode']);
+                        $qty=1;
+                   }
+    
+                   $detail_barang = $this->main_model->find_data(['kode_barcode'=>$post['kode_barcode']],'barang')->row_array();
+    
+                   $data_masuk = array(
+                        'id_barang'=>$detail_barang['id'],
+                        'qty'=>$qty,
+                        'tanggal_transaksi'=>date('Y-m-d H:i:s')
+                   );
+                   $this->main_model->insert_data($data_masuk,'barang_keluar');
+                  
+                   $data['barang'] = $this->main_model->find_data(['kode_barcode'=>$post['kode_barcode']],'barang')->row_array();
+                   $data['barang']['status']="sukses";
+                }
+               
+           }else{
+            $data['barang']=array(
+                "status"=>"gagal"
+            );
+           }
+        }
+
+        $this->load->view('header');
+        $this->load->view('stok_keluar',$data);
+        $this->load->view('footer');
+    }
+    
 }
 
 
