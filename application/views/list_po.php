@@ -14,6 +14,7 @@
 							<thead>
 								<tr>
 									<th>ID</th>
+									<th>NO. PO</th>
 									<th>Suplier</th>
 									<th>Total Barang</th>
 									<th>Tanggal</th>
@@ -25,12 +26,20 @@
                                 <?php foreach($data_po as $po){ ?>
 								<tr>
 									<td><?= $po->id; ?></td>
+									<td><?= $po->no_po; ?></td>
 									<td><?= $po->nama_suplier; ?></td>
 									<td><?= $po->total_barang; ?></td>
 									<td><?= $po->tanggal_transaksi; ?></td>
-									<td><?= $po->status; ?></td>
 									<td>
-                                        <a href="<?= base_url("po/edit/".$po->id); ?>" class="btn btn-warning"><i class="fas fa-pencil-alt"></i> Edit</a>
+										<?php if($po->status == "Selesai"){ ?>
+											<span class="badge badge-success"><?= $po->status; ?></span>
+										<?php }else{ ?>
+											<span class="badge badge-warning"><?= $po->status; ?></span>
+										 <?php } ?>
+									</td>
+									<td>
+                                        <a href="<?= base_url("po/detail/".$po->id); ?>" class="btn btn-warning"><i class="fas fa-eye"></i> Detail</a>
+                                        <a href="<?= base_url("po/print/".$po->id); ?>" class="btn btn-primary"><i class="fas fa-print"></i> Cetak</a>
                                         <a href="<?= base_url("po/delete/".$po->id); ?>" onclick="return confirm('apakah anda yakin akan menghapus?')" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
                                     </td>
 								</tr>

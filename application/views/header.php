@@ -203,6 +203,22 @@
             </a> 
           </li>
           <li class="nav-item">
+            <a href="<?= base_url("barang"); ?>" class="nav-link">
+              <i class="nav-icon fas fa-server"></i>
+              <p>
+                Data Barang
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= base_url("suplier"); ?>" class="nav-link">
+              <i class="nav-icon fas fa-link"></i>
+              <p>
+                Data Suplier
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="<?= base_url("barang/input_stock"); ?>" class="nav-link">
               <i class="nav-icon fas fa-sign-in-alt"></i>
               <p>
@@ -219,21 +235,22 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= base_url("barang"); ?>" class="nav-link">
-              <i class="nav-icon fas fa-server"></i>
+            <a href="<?= base_url("po"); ?>" class="nav-link">
+            <i class="nav-icon fas fa-shopping-basket"></i>
               <p>
-                Data Barang
+                Purchase Order
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= base_url("suplier"); ?>" class="nav-link">
-              <i class="nav-icon fas fa-link"></i>
+            <a href="<?= base_url("po"); ?>" class="nav-link">
+            <i class="nav-icon fas fa-warehouse"></i>
               <p>
-                Data Suplier
+                Permintaan Gudang
               </p>
             </a>
           </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

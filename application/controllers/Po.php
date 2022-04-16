@@ -47,9 +47,9 @@ class Po extends CI_Controller {
 
     public function simpan_po(){
         $post=$this->input->post();
-        $no_po = date("ymdhis");
+        $no_po = "po-".date("ymdhis");
         $suplier = $this->main_model->find_data(['id'=>$post['id_suplier']],'suplier')->row_array();
-        $total_barang = $this->db->query("select count(total) as total from data_po_temp")->row_array();
+        $total_barang = $this->db->query("select sum(total) as total from data_po_temp")->row_array();
 
 
         $data_po = array(
@@ -81,43 +81,42 @@ class Po extends CI_Controller {
         
     }
 
-    public function add_action(){
-        $post = $this->input->post();
+    public function detail($id){
+        $po = $this->main_model->find_data(['id'=>$id],'po')->row_array();
+        $data_po = $this->db->query("SELECT po.id, po.total, brg.nama_barang FROM data_po as po join barang brg on po.id_barang=brg.id where po.id_po=".$id)->result();
 
-        $data_simpan = array(
-            'nama_suplier'=>$post['nama_suplier'],
-            'alamat'=>$post['alamat'],
+        $data = array(
+            'header'=>$po,
+            'data_po'=>$data_po
         );
-        $this->main_model->insert_data($data_simpan,'suplier');
-        $this->session->set_flashdata('msg','swal("Sukses!", "Data Berhasil Ditambah!", "success");');
-        redirect('suplier','refresh');
-       
-    }
-
-    public function edit($id){
-        $suplier = $this->main_model->find_data(['id'=>$id],'suplier')->row_array();
-        $data['suplier'] = $suplier;
         $this->load->view('header');
-        $this->load->view('edit_suplier',$data);
+        $this->load->view('detail_po',$data);
         $this->load->view('footer');
     }
 
-    public function update(){
-        $post = $this->input->post();
-    
-        $data_simpan = array(
-            'nama_suplier'=>$post['nama_suplier'],
-            'alamat'=>$post['alamat'],
-        );
-        $this->main_model->update_data(['id'=>$post['id']],$data_simpan,'suplier');
-        $this->session->set_flashdata('msg','swal("Sukses!", "Data Berhasil Diubah!", "success");');
-        redirect('suplier','refresh');
+    public function diterima($id){
+        $this->main_model->update_data(['id'=>$id],['status'=>"Selesai"],'po');
+        $this->session->set_flashdata('msg','swal("Sukses!", "Data PO Berhasil Diubah!", "success");');
+        redirect('po','refresh');
     }
 
+    public function print($id){
+        $po = $this->main_model->find_data(['id'=>$id],'po')->row_array();
+        $data_po = $this->db->query("SELECT po.id, po.total, brg.nama_barang FROM data_po as po join barang brg on po.id_barang=brg.id where po.id_po=".$id)->result();
+
+        $data = array(
+            'header'=>$po,
+            'data_po'=>$data_po
+        );
+
+        $this->load->view('print_po',$data);
+    }
+
+
     public function delete($id){
-        $this->main_model->delete_data(['id'=>$id],'suplier');
+        $this->main_model->delete_data(['id'=>$id],'po');
         $this->session->set_flashdata('msg','swal("Sukses!", "Data Berhasil Dihapus!", "success");');
-        redirect('suplier','refresh');
+        redirect('po','refresh');
     }
     
 }
