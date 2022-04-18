@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | DataTables</title>
+  <title>Sistem Gudang</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -243,10 +243,53 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= base_url("po"); ?>" class="nav-link">
+            <a href="<?= base_url("permintaan_gudang"); ?>" class="nav-link">
             <i class="nav-icon fas fa-warehouse"></i>
               <p>
                 Permintaan Gudang
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Laporan
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= base_url("laporan/barang_masuk"); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Barang Masuk</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= base_url("laporan/barang_keluar"); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Barang Keluar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= base_url("laporan/barang_return"); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Return</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= base_url("laporan/barang_service"); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Service</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="<?= base_url("user"); ?>" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+              <p>
+               User
               </p>
             </a>
           </li>
