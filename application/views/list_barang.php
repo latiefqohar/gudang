@@ -9,7 +9,9 @@
 					</div>
 					<!-- /.card-header -->
 					<div class="card-body">
+                    <?php if($this->session->userdata("role")!="Kasir"){ ?>
                         <button data-toggle="modal" data-target="#modalTambah" class="btn btn-primary mb-2"><i class="fas fa-plus"></i> Tambah Data</button>
+                        <?php } ?>
 						<table id="example1" class="table table-bordered table-striped">
 							<thead>
 								<tr>
@@ -30,8 +32,10 @@
 									<td><?= $barang->qty; ?></td>
 									<td><?= $barang->no_rak; ?></td>
 									<td>
+                                        <?php if($this->session->userdata("role")!="Kasir"){ ?>
                                         <a href="<?= base_url("barang/edit/".$barang->id); ?>" class="btn btn-warning"><i class="fas fa-pencil-alt"></i> Edit</a>
                                         <a href="<?= base_url("barang/delete/".$barang->id); ?>" onclick="return confirm('apakah anda yakin akan menghapus?')" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
+                                        <?php } ?>
                                     </td>
 								</tr>
                                 <?php } ?>

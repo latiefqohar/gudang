@@ -5,6 +5,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Laporan extends CI_Controller {
 
+    public function __construct()
+    {
+        parent::__construct();
+        if (!$this->session->userdata("id")) {
+            redirect('login','refresh');
+        }
+    }
+
     public function barang_masuk()
     {
         $barang_masuk = $this->db->query("SELECT det.qty, det.tanggal_transaksi,brg.kode_barcode,brg.nama_barang from barang_masuk as det join barang as brg on det.id_barang=brg.id")->result();

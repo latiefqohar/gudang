@@ -18,13 +18,21 @@ class Login extends CI_Controller {
 
         $cek = $this->db->get_where('user',$data)->num_rows();
         if ($cek <1) {
-            $data_user =  $this->db->get_where('user',$data)->row_array();
-            $this->session->set_userdata($data);
             $this->session->set_flashdata('msg','swal("Gagal!", "Username atau Password Salah!", "error");');
             redirect('Login','refresh');
         }else{
+            $data_user =  $this->db->get_where('user',$data)->row_array();
+            $this->session->set_userdata($data_user);
             redirect('Dashboard','refresh');
         }
+    }
+
+    public function logout(){
+        $this->session->sess_destroy();
+        redirect('Login','refresh');
+    }
+    public function ubah_password(){
+        
     }
 
 }

@@ -6,14 +6,16 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>
+                            <?= $permintaan; ?>
+                        </h3>
 
-                        <p>New Orders</p>
+                        <p>Order Gudang</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                   
                 </div>
             </div>
             <!-- ./col -->
@@ -21,14 +23,16 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
+                        <h3>
+                            <?= $barang_masuk; ?>
+                        </h3>
 
-                        <p>Bounce Rate</p>
+                        <p>Barang Masuk</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                   
                 </div>
             </div>
             <!-- ./col -->
@@ -36,14 +40,16 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3>
+                            <?= $barang_keluar; ?>
+                        </h3>
 
-                        <p>User Registrations</p>
+                        <p>Barang Keluar</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  
                 </div>
             </div>
             <!-- ./col -->
@@ -51,19 +57,61 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>65</h3>
+                        <h3>
+                            <?= $barang_return; ?>
+                        </h3>
 
-                        <p>Unique Visitors</p>
+                        <p>Return</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                   
                 </div>
             </div>
             <!-- ./col -->
         </div>
         <!-- /.row -->
+
+
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        Barang Belum Disiapkan
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <tr>
+                                    <th>Nama Barang</th>
+                                    <th>Quantity</th>
+                                    <th>Tanggal</th>
+                                    <th>Status</th>
+                                </tr>
+                                <?php foreach($permintaan_gudang as $permintaan){ ?>
+                                <tr>
+                                    <td>
+                                        <?= $permintaan->nama_barang; ?>
+                                    </td>
+                                    <td>
+                                        <?= $permintaan->qty; ?>
+                                    </td>
+                                    <td>
+                                        <?= $permintaan->tanggal; ?>
+                                    </td>
+                                    <td>
+                                        <?= $permintaan->status; ?>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
     </div>
     <!-- /.container-fluid -->
