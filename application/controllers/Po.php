@@ -57,13 +57,13 @@ class Po extends CI_Controller {
         $post=$this->input->post();
         $no_po = "po-".date("ymdhis");
         $suplier = $this->main_model->find_data(['id'=>$post['id_suplier']],'suplier')->row_array();
+        // var_dump($post['id_suplier']);die();
         $total_barang = $this->db->query("select sum(total) as total from data_po_temp")->row_array();
-
 
         $data_po = array(
             "no_po" => $no_po,
             "id_suplier" => $post['id_suplier'],
-            "nama_suplier" => $suplier['nama_suplier'],
+            "id_suplier" => $suplier['id'],
             "total_barang" => $total_barang['total'],
             "tanggal_transaksi" => date("Y-m-d H:i:s"),
             "status" => "Dibuat"

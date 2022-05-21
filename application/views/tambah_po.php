@@ -59,7 +59,7 @@
 								<select name="id_suplier" class="form-control" required>
 									<option value="">Pilih Suplier</option>
 									<?php foreach($suplier as $spl){ ?>
-										<option value="<?= $brg->id; ?>"><?= $spl->nama_suplier; ?></option>
+										<option value="<?= $spl->id; ?>"><?= $spl->nama_suplier; ?></option>
 									<?php } ?>
 								</select>
 							</div>

@@ -148,6 +148,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="<?= base_url("barang_return"); ?>" class="nav-link">
+              <i class="nav-icon fas fa-sign-in-alt"></i>
+              <p>
+                Barang Return
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="<?= base_url("po"); ?>" class="nav-link">
             <i class="nav-icon fas fa-shopping-basket"></i>
               <p>
@@ -217,7 +225,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?= base_url("laporan/barang_masuk"); ?>" class="nav-link">
+                <a href="<?= base_url("login/ubah_password"); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ubah  Password</p>
                 </a>

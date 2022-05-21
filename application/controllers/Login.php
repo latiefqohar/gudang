@@ -32,7 +32,18 @@ class Login extends CI_Controller {
         redirect('Login','refresh');
     }
     public function ubah_password(){
+        $this->load->view('header');
+        $this->load->view('ubah_password');
+        $this->load->view('footer');
         
+    }
+
+    public function aksi_ubah_password(){
+        $password   = $this->input->post('password');
+        $id_user = $this->session->userdata('id');
+        $this->main_model->update_data(['id'=>$id_user],['password'=>md5($password)],'user');
+        $this->session->set_flashdata('msg','swal("Sukses!", "Password Berhasil Diubah!", "success");');
+        redirect('login/ubah_password','refresh');
     }
 
 }
