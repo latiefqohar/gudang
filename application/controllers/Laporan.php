@@ -39,7 +39,7 @@ class Laporan extends CI_Controller {
 
     public function barang_return()
     {
-        $barang_return = $this->db->query("SELECT det.qty,det.keterangan, det.tanggal,brg.kode_barcode,brg.nama_barang from barang_return as det join barang as brg on det.id_barang=brg.id where status = 'Return'")->result();
+        $barang_return = $this->db->query("SELECT det.qty,det.keterangan, det.tanggal,det.nama_barang from barang_return as det  where status = 'Return'")->result();
 
         $data = array(
             "data_barang_return"=>$barang_return
@@ -51,7 +51,7 @@ class Laporan extends CI_Controller {
 
     public function barang_service()
     {
-        $barang_service = $this->db->query("SELECT det.qty,det.keterangan, det.tanggal,brg.kode_barcode,brg.nama_barang from barang_return as det join barang as brg on det.id_barang=brg.id where status = 'Service'")->result();
+        $barang_service = $this->db->query("SELECT det.qty,det.keterangan, det.tanggal, det.nama_barang from barang_return as det where status = 'Service'")->result();
 
         $data = array(
             "data_barang_service"=>$barang_service

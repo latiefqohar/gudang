@@ -13,7 +13,6 @@
 						<table id="example1" class="table table-bordered table-striped">
 							<thead>
 								<tr>
-									<th>Kode Barcode</th>
 									<th>Nama Barang</th>
 									<th>Qty</th>
 									<th>Keterangan</th>
@@ -24,7 +23,7 @@
 							<tbody>
                                 <?php foreach($data_barang_service as $barang_service){ ?>
 								<tr>
-									<td><?= $barang_service->kode_barcode; ?></td>
+								
 									<td><?= $barang_service->nama_barang; ?></td>
 									<td><?= $barang_service->qty; ?></td>
 									<td><?= $barang_service->keterangan; ?></td>

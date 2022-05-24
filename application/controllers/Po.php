@@ -59,33 +59,38 @@ class Po extends CI_Controller {
         $suplier = $this->main_model->find_data(['id'=>$post['id_suplier']],'suplier')->row_array();
         // var_dump($post['id_suplier']);die();
         $total_barang = $this->db->query("select sum(total) as total from data_po_temp")->row_array();
-
-        $data_po = array(
-            "no_po" => $no_po,
-            "id_suplier" => $post['id_suplier'],
-            "id_suplier" => $suplier['id'],
-            "total_barang" => $total_barang['total'],
-            "tanggal_transaksi" => date("Y-m-d H:i:s"),
-            "status" => "Dibuat"
-        );
-
-        $this->db->insert('po', $data_po);
-        $id_po = $this->db->insert_id();
-
-        $barang = $this->main_model->get_data("data_po_temp")->result();
-        foreach ($barang as $brg ) {
-            $data_detail_po = array(
-                'id_po' => $id_po,
-                'id_barang' => $brg->id_barang,
-                'total' => $brg->total
+        if ($total_barang['total'] == null) {
+            $this->session->set_flashdata('msg','swal("Gagal!", "Anda belum menambahkan data barang, tambahkan minimal 1 data barang!", "error");');
+            redirect('po/tambah','refresh');
+        }else{
+            $data_po = array(
+                "no_po" => $no_po,
+                "id_suplier" => $post['id_suplier'],
+                "nama_suplier" => $suplier['nama_suplier'],
+                "total_barang" => $total_barang['total'],
+                "tanggal_transaksi" => date("Y-m-d H:i:s"),
+                "status" => "Dibuat"
             );
-
-            $this->db->insert('data_po', $data_detail_po);
+    
+            $this->db->insert('po', $data_po);
+            $id_po = $this->db->insert_id();
+    
+            $barang = $this->main_model->get_data("data_po_temp")->result();
+            foreach ($barang as $brg ) {
+                $data_detail_po = array(
+                    'id_po' => $id_po,
+                    'id_barang' => $brg->id_barang,
+                    'total' => $brg->total
+                );
+    
+                $this->db->insert('data_po', $data_detail_po);
+            }
+    
+            $this->db->empty_table('data_po_temp');
+            $this->session->set_flashdata('msg','swal("Sukses!", "Data PO Berhasil Ditambah!", "success");');
+            redirect('po','refresh');
         }
-
-        $this->db->empty_table('data_po_temp');
-        $this->session->set_flashdata('msg','swal("Sukses!", "Data PO Berhasil Ditambah!", "success");');
-        redirect('po','refresh');
+       
         
     }
 
