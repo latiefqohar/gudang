@@ -16,6 +16,8 @@
 									<th>Kode Barcode</th>
 									<th>Nama Barang</th>
 									<th>Qty</th>
+									<th>Harga</th>
+									<th>PPN</th>
 									<th>Tanggal</th>
 									
 								</tr>
@@ -26,6 +28,8 @@
 									<td><?= $barang_keluar->kode_barcode; ?></td>
 									<td><?= $barang_keluar->nama_barang; ?></td>
 									<td><?= $barang_keluar->qty; ?></td>
+									<td><?= $barang_keluar->harga; ?></td>
+									<td><?= round($barang_keluar->harga*11/100); ?></td>
 									<td><?= $barang_keluar->tanggal_transaksi; ?></td>
 								</tr>
                                 <?php } ?>

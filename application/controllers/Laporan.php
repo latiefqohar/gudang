@@ -15,7 +15,7 @@ class Laporan extends CI_Controller {
 
     public function barang_masuk()
     {
-        $barang_masuk = $this->db->query("SELECT det.qty, det.tanggal_transaksi,brg.kode_barcode,brg.nama_barang from barang_masuk as det join barang as brg on det.id_barang=brg.id")->result();
+        $barang_masuk = $this->db->query("SELECT det.qty, det.tanggal_transaksi,brg.kode_barcode,brg.nama_barang,brg.harga from barang_masuk as det join barang as brg on det.id_barang=brg.id")->result();
 
         $data = array(
             "data_barang_masuk"=>$barang_masuk
@@ -27,7 +27,7 @@ class Laporan extends CI_Controller {
 
     public function barang_keluar()
     {
-        $barang_keluar = $this->db->query("SELECT det.qty, det.tanggal_transaksi,brg.kode_barcode,brg.nama_barang from barang_keluar as det join barang as brg on det.id_barang=brg.id")->result();
+        $barang_keluar = $this->db->query("SELECT det.qty, det.tanggal_transaksi,brg.kode_barcode,brg.nama_barang,brg.harga from barang_keluar as det join barang as brg on det.id_barang=brg.id")->result();
 
         $data = array(
             "data_barang_keluar"=>$barang_keluar
@@ -39,7 +39,7 @@ class Laporan extends CI_Controller {
 
     public function barang_return()
     {
-        $barang_return = $this->db->query("SELECT det.qty,det.keterangan, det.tanggal,det.nama_barang from barang_return as det  where status = 'Return'")->result();
+        $barang_return = $this->db->query("SELECT det.qty,det.keterangan, det.tanggal,det.nama_barang,brg.harga from barang_return as det join barang as brg on brg.nama_barang=det.nama_barang where status = 'Return'")->result();
 
         $data = array(
             "data_barang_return"=>$barang_return
@@ -51,7 +51,7 @@ class Laporan extends CI_Controller {
 
     public function barang_service()
     {
-        $barang_service = $this->db->query("SELECT det.qty,det.keterangan, det.tanggal, det.nama_barang from barang_return as det where status = 'Service'")->result();
+        $barang_service = $this->db->query("SELECT det.qty,det.keterangan, det.tanggal, det.nama_barang,brg.harga from barang_return as det join barang as brg on brg.nama_barang=det.nama_barang where status = 'Service'")->result();
 
         $data = array(
             "data_barang_service"=>$barang_service

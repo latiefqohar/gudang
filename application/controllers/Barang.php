@@ -120,11 +120,11 @@ class Barang extends CI_Controller {
             $post = $this->input->post();
            $cek = $this->main_model->find_data(['kode_barcode'=>$post['kode_barcode']],'barang')->num_rows();
            if ($cek > 0) {
-               $cek_stok = $this->main_model->find_data(['kode_barcode'=>$post['kode_barcode'],'qty >'=>0],'barang')->num_rows();
+               $cek_stok = $this->main_model->find_data(['kode_barcode'=>$post['kode_barcode'],'qty >'=>5],'barang')->num_rows();
                 if ($cek_stok < 1) {
                     $data['barang']=array(
                         "status"=>"gagal",
-                        "pesan" => "Stok Kosong"
+                        "pesan" => "Stok Sudah Limit"
                     );
                 }else{
                     if (isset($post['qty'])) {

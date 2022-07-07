@@ -15,6 +15,8 @@
 								<tr>
 									<th>Nama Barang</th>
 									<th>Qty</th>
+									<th>Harga</th>
+									<th>PPN</th>
 									<th>Keterangan</th>
 									<th>Tanggal</th>
 									
@@ -26,6 +28,8 @@
 
 									<td><?= $barang_return->nama_barang; ?></td>
 									<td><?= $barang_return->qty; ?></td>
+									<td><?= $barang_return->harga; ?></td>
+									<td><?= round($barang_return->harga*10/100); ?></td>
 									<td><?= $barang_return->keterangan; ?></td>
 									<td><?= $barang_return->tanggal; ?></td>
 								</tr>
