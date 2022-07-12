@@ -17,6 +17,7 @@
 									<th>Nama Barang</th>
 									<th>Qty</th>
 									<th>Harga</th>
+									<th>PPN</th>
 									<th>Tanggal</th>
 									
 								</tr>

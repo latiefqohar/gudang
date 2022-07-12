@@ -47,9 +47,18 @@
                                                 <td><b><?= $barang['qty']; ?></b></td>
                                             </tr>
                                             <tr>
+                                                <th> Harga</th>
+                                                <td><b><?= $barang['harga']; ?></b></td>
+                                            </tr>
+                                            <tr>
+                                                <th> PPN (11%)</th>
+                                                <td><b><?= round($barang['harga']*11/100); ?></b></td>
+                                            </tr>
+                                            <tr>
                                                 <th>Rak</th>
                                                 <td><?= $barang['no_rak']; ?></td>
                                             </tr>
+                                            
                                         </table>
                                         <audio src="<?= base_url("assets/success.mp3"); ?>" autoplay="autoplay">
                                     <?php }else{ ?>
