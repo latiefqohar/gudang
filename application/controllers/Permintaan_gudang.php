@@ -88,13 +88,17 @@ class Permintaan_gudang extends CI_Controller {
     }
 
     public function selesai($id){
-        $this->main_model->update_data(['id'=>$id],['status'=>'Selesai Disiapkan'],'permintaan');
+        $data_permintaan = $this->main_model->find_data(['id'=>$id],'permintaan')->row_array();
+
+        $this->main_model->update_data(['nama_pembeli'=>$data_permintaan['nama_pembeli']],['status'=>'Selesai Disiapkan'],'permintaan');
         $this->session->set_flashdata('msg','swal("Sukses!", "Data Berhasil Diubah!", "success");');
         redirect('permintaan_gudang','refresh');
     }
 
     public function delete($id){
-        $this->main_model->delete_data(['id'=>$id],'permintaan');
+        $data_permintaan = $this->main_model->find_data(['id'=>$id],'permintaan')->row_array();
+
+        $this->main_model->delete_data(['nama_pembeli'=>$data_permintaan['nama_pembeli']],'permintaan');
         $this->session->set_flashdata('msg','swal("Sukses!", "Data Berhasil Dihapus!", "success");');
         redirect('permintaan_gudang','refresh');
     }

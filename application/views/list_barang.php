@@ -20,7 +20,11 @@
 									<th>Nama</th>
 									<th>Stok</th>
 									<th>Penyimpanan</th>
+                                    <?php if($this->session->userdata("role")!="Kasir"){ ?>
 									<th>Aksi</th>
+                                    <?php }else{ ?>
+                                    <th>Harga</th>
+                                    <?php } ?>
 								</tr>
 							</thead>
 							<tbody>
@@ -35,6 +39,8 @@
                                         <?php if($this->session->userdata("role")!="Kasir"){ ?>
                                         <a href="<?= base_url("barang/edit/".$barang->id); ?>" class="btn btn-warning"><i class="fas fa-pencil-alt"></i> Edit</a>
                                         <a href="<?= base_url("barang/delete/".$barang->id); ?>" onclick="return confirm('apakah anda yakin akan menghapus?')" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
+                                        <?php }else{ ?>
+                                        <?= $barang->harga; ?>
                                         <?php } ?>
                                     </td>
 								</tr>

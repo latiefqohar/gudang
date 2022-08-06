@@ -36,8 +36,8 @@
 										<?php if($this->session->userdata("role")=="Admin Gudang"){ ?>
 										<a href="<?= base_url("permintaan_gudang/selesai/".$permintaan->id); ?>" class="btn btn-success"><i class="fas fa-check-double"></i> Selesai Disiapkan</a>
 										<?php }elseif($this->session->userdata("role")=="Kasir"){?>
-											<a href="<?= base_url("permintaan_gudang/edit/".$permintaan->id); ?>" class="btn btn-warning"><i class="fas fa-pencil-alt"></i> Edit</a>
-                                        <a href="<?= base_url("permintaan_gudang/delete/".$permintaan->id); ?>" onclick="return confirm('apakah anda yakin akan menghapus?')" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
+											<!-- <a href="<?= base_url("permintaan_gudang/edit/".$permintaan->id); ?>" class="btn btn-warning"><i class="fas fa-pencil-alt"></i> Edit</a> -->
+                                        <!-- <a href="<?= base_url("permintaan_gudang/delete/".$permintaan->id); ?>" onclick="return confirm('apakah anda yakin akan menghapus?')" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a> -->
 										<a href="<?= base_url("permintaan_gudang/detail/".$permintaan->id); ?>" class="btn btn-primary"><i class="fas fa-eye"></i> Detail</a>
 										<?php } ?>
                                     </td>
