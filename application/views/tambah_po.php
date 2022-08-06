@@ -1,3 +1,14 @@
+<?php 
+
+function rupiah($angka){
+	
+	$hasil_rupiah = number_format($angka,0,',','.');
+	return $hasil_rupiah;
+ 
+}
+
+?>
+
 <!-- Main content -->
 <section class="content mt-2">
 	<div class="container-fluid">
@@ -36,6 +47,8 @@
 									<th>ID</th>
 									<th>Nama Barang</th>
 									<th>Total Barang</th>
+									<th>Harga</th>
+									<th>Total Harga</th>
 									<th>Aksi</th>
 								</tr>
 							</thead>
@@ -45,6 +58,8 @@
 									<td><?= $po->id; ?></td>
 									<td><?= $po->nama_barang; ?></td>
 									<td><?= $po->total; ?></td>
+									<td><?= rupiah($po->harga); ?></td>
+									<td><?= rupiah($po->total*$po->harga); ?></td>
 									<td>
                                         <a href="<?= base_url("po/delete_temp/".$po->id); ?>" onclick="return confirm('apakah anda yakin akan menghapus?')" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
                                     </td>

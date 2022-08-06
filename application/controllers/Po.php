@@ -35,7 +35,7 @@ class Po extends CI_Controller {
         }
         $suplier = $this->main_model->get_data('suplier')->result();
         $barang = $this->main_model->get_data('barang')->result();
-        $temp = $this->db->query("SELECT po.id, brg.nama_barang, po.total from data_po_temp po join barang brg on po.id_barang = brg.id")->result();
+        $temp = $this->db->query("SELECT po.id, brg.nama_barang,brg.harga, po.total from data_po_temp po join barang brg on po.id_barang = brg.id")->result();
 
         $data = array(
             "suplier"=>$suplier,
@@ -82,7 +82,7 @@ class Po extends CI_Controller {
                     'id_barang' => $brg->id_barang,
                     'total' => $brg->total
                 );
-                $this->db->query("UPDATE barang  set qty=qty+".$brg->total." where id=".$brg->id_barang);
+                // $this->db->query("UPDATE barang  set qty=qty+".$brg->total." where id=".$brg->id_barang);
                 $this->db->insert('data_po', $data_detail_po);
             }
     
@@ -109,6 +109,10 @@ class Po extends CI_Controller {
 
     public function diterima($id){
         $this->main_model->update_data(['id'=>$id],['status'=>"Selesai"],'po');
+        $barang = $this->main_model->find_data(['id_po'=>$id],"data_po")->result();
+        foreach ($barang as $brg ) {
+            $this->db->query("UPDATE barang  set qty=qty+".$brg->total." where id=".$brg->id_barang);
+        }
         $this->session->set_flashdata('msg','swal("Sukses!", "Data PO Berhasil Diubah!", "success");');
         redirect('po','refresh');
     }
