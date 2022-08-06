@@ -96,7 +96,7 @@ class Po extends CI_Controller {
 
     public function detail($id){
         $po = $this->main_model->find_data(['id'=>$id],'po')->row_array();
-        $data_po = $this->db->query("SELECT po.id, po.total, brg.nama_barang FROM data_po as po join barang brg on po.id_barang=brg.id where po.id_po=".$id)->result();
+        $data_po = $this->db->query("SELECT po.id, po.total, brg.nama_barang, brg.harga FROM data_po as po join barang brg on po.id_barang=brg.id where po.id_po=".$id)->result();
 
         $data = array(
             'header'=>$po,

@@ -36,6 +36,8 @@
 									<th>ID</th>
 									<th>Nama Barang</th>
 									<th>Total Barang</th>
+									<th>Harga</th>
+									<th>Total Harga</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -44,6 +46,8 @@
 									<td><?= $po->id; ?></td>
 									<td><?= $po->nama_barang; ?></td>
 									<td><?= $po->total; ?></td>
+									<td><?= $po->harga; ?></td>
+									<td><?= $po->harga* $po->total; ?></td>
 								</tr>
                                 <?php } ?>
 							</tbody>
