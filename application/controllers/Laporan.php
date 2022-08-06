@@ -60,6 +60,30 @@ class Laporan extends CI_Controller {
         $this->load->view('laporan_barang_service',$data);
         $this->load->view('footer');
     }
+
+    public function permintaan_gudang()
+    {
+        $permintaan =  $this->db->query('select * from permintaan group by nama_pembeli')->result();
+        $barang = $this->main_model->get_data('barang')->result();
+
+        $data = array(
+            "data_permintaan"=>$permintaan,
+            "data_barang"=>$barang
+        );
+        $this->load->view('header');
+        $this->load->view('laporan_permintaan',$data);
+        $this->load->view('footer');
+    }
+
+    public function po(){
+        $po = $this->db->query("SELECT * FROM po")->result();
+        $data = array(
+            "data_po"=>$po
+        );
+        $this->load->view('header');
+        $this->load->view('laporan_po',$data);
+        $this->load->view('footer');
+    }
   
 }
 

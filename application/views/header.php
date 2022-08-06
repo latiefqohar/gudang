@@ -204,6 +204,18 @@
                   <p>Service</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?= base_url("laporan/permintaan_gudang"); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Permintaan Barang</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= base_url("laporan/po"); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>PO</p>
+                </a>
+              </li>
             </ul>
           </li>
           
