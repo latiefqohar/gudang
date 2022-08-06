@@ -16,9 +16,11 @@ class Barang extends CI_Controller {
     public function index()
     {
         $barang = $this->main_model->get_data('barang')->result();
+        $suplier = $this->main_model->get_data('suplier')->result();
 
         $data = array(
-            "data_barang"=>$barang
+            "data_barang"=>$barang,
+            "data_suplier"=>$suplier,
         );
         $this->load->view('header');
         $this->load->view('list_barang',$data);
@@ -38,6 +40,7 @@ class Barang extends CI_Controller {
                 'qty'=>$post['qty'],
                 'harga'=>$post['harga'],
                 'no_rak'=>$post['no_rak'],
+                'suplier'=>$post['suplier'],
             );
             $this->main_model->insert_data($data_simpan,'barang');
             $this->session->set_flashdata('msg','swal("Sukses!", "Data Berhasil DItambah!", "success");');

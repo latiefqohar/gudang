@@ -98,6 +98,15 @@
                             <option value="Baris D">Baris D</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="suplier">Suplier</label>
+                        <select name="suplier" class="form-control" required>
+                            <option value="">Pilih Suplier</option>
+                            <?php foreach($data_suplier as $suplier){ ?>
+                            <option value="<?= $suplier->nama_suplier; ?>"><?= $suplier->nama_suplier ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary float-right">Submit</button>
                 </form>
             </div>

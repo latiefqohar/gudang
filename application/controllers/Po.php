@@ -82,7 +82,7 @@ class Po extends CI_Controller {
                     'id_barang' => $brg->id_barang,
                     'total' => $brg->total
                 );
-    
+                $this->db->query("UPDATE barang  set qty=qty+".$brg->total." where id=".$brg->id_barang);
                 $this->db->insert('data_po', $data_detail_po);
             }
     

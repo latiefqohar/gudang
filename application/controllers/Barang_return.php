@@ -31,7 +31,7 @@ class Barang_return extends CI_Controller {
         $post = $this->input->post();
        
 
-        $this->db->query("UPDATE barang SET qty=qty-1 where nama_barang = '".$post['nama_barang']."'");
+        $this->db->query("UPDATE barang SET qty=qty-".$post['qty']." where nama_barang = '".$post['nama_barang']."'");
         
         $data_simpan = array(
             'nama_barang'=>$post['nama_barang'],
