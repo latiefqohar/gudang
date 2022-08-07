@@ -15,7 +15,7 @@ class Laporan extends CI_Controller {
 
     public function barang_masuk()
     {
-        $barang_masuk = $this->db->query("SELECT det.qty, det.tanggal_transaksi,brg.kode_barcode,brg.nama_barang,brg.harga from barang_masuk as det join barang as brg on det.id_barang=brg.id")->result();
+        $barang_masuk = $this->db->query("SELECT det.qty, det.tanggal_transaksi,brg.kode_barcode,brg.suplier,brg.nama_barang,brg.harga from barang_masuk as det join barang as brg on det.id_barang=brg.id")->result();
 
         $data = array(
             "data_barang_masuk"=>$barang_masuk
@@ -27,7 +27,7 @@ class Laporan extends CI_Controller {
 
     public function barang_keluar()
     {
-        $barang_keluar = $this->db->query("SELECT det.qty, det.tanggal_transaksi,brg.kode_barcode,brg.nama_barang,brg.harga from barang_keluar as det join barang as brg on det.id_barang=brg.id")->result();
+        $barang_keluar = $this->db->query("SELECT det.qty, det.tanggal_transaksi,brg.suplier,brg.kode_barcode,brg.nama_barang,brg.harga from barang_keluar as det join barang as brg on det.id_barang=brg.id")->result();
 
         $data = array(
             "data_barang_keluar"=>$barang_keluar

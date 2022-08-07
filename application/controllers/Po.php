@@ -112,6 +112,12 @@ class Po extends CI_Controller {
         $barang = $this->main_model->find_data(['id_po'=>$id],"data_po")->result();
         foreach ($barang as $brg ) {
             $this->db->query("UPDATE barang  set qty=qty+".$brg->total." where id=".$brg->id_barang);
+            $data_barang = array(
+                'id_barang' => $brg->id_barang,
+                'qty' => $brg->total,
+                'tanggal_transaksi' => date('Y-m-d H:i:s')
+            );
+            $this->main_model->insert_data($data_barang,'barang_masuk');
         }
         $this->session->set_flashdata('msg','swal("Sukses!", "Data PO Berhasil Diubah!", "success");');
         redirect('po','refresh');

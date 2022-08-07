@@ -15,6 +15,7 @@
 								<tr>
 									<th>Kode Barcode</th>
 									<th>Nama Barang</th>
+									<th>Suplier</th>
 									<th>Qty</th>
 									<th>Harga</th>
 									<th>PPN</th>
@@ -27,6 +28,7 @@
 								<tr>
 									<td><?= $barang_masuk->kode_barcode; ?></td>
 									<td><?= $barang_masuk->nama_barang; ?></td>
+									<td><?= $barang_masuk->suplier; ?></td>
 									<td><?= $barang_masuk->qty; ?></td>
 									<td><?= $barang_masuk->harga; ?></td>
 									<td><?= round($barang_masuk->harga*11/100); ?></td>

@@ -43,6 +43,10 @@
                                                 <td><?= $barang['nama_barang']; ?></td>
                                             </tr>
                                             <tr>
+                                                <th>Suplier</th>
+                                                <td><?= $barang['suplier']; ?></td>
+                                            </tr>
+                                            <tr>
                                                 <th> Quantity</th>
                                                 <td><b><?= $barang['qty']; ?></b></td>
                                             </tr>
