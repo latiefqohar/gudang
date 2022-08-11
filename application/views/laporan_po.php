@@ -9,7 +9,7 @@
 					</div>
 					<!-- /.card-header -->
 					<div class="card-body">
-                        <a href="<?= base_url("po/tambah"); ?>" class="btn btn-primary mb-2"><i class="fas fa-plus"></i> Tambah Data</a>
+                        <!-- <a href="<?= base_url("po/tambah"); ?>" class="btn btn-primary mb-2"><i class="fas fa-plus"></i> Tambah Data</a> -->
 						<table id="example1" class="table table-bordered table-striped">
 							<thead>
 								<tr>
